@@ -3,7 +3,7 @@ const HttpError = require("../models/http-error");
 
 exports.newConversation = async (req,res,next) => {
     const newConversation = new Conversation({
-        members: [req.body.senderId, req.body.recieverId]
+        members: [req.body.senderId, req.body.receiverId]
     })
     try {
         const savedConversation = await newConversation.save();
@@ -28,12 +28,14 @@ exports.getChatwithId = async (req, res, next) => {
 exports.getChat = async (req, res, next) => {
     const user1Id = req.body.id1;
     const user2Id = req.body.id2;
+    // console.log(user1Id);
+    // console.log(user2Id);
     try {
         const conversation = await Conversation.find({
-            members: {$in : [user1Id], $in : [user2Id]}
+            members: {$all : [user1Id, user2Id]}
         });
         
-        res.status(200).json(conversation); 
+        res.status(200).json(conversation);
     } catch (error) {
         return next(new HttpError("Something Went wrong please try again", 500));
     }

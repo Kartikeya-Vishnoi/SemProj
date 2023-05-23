@@ -118,7 +118,7 @@ exports.connectInvestors = async (req, res, next) => {
 
 exports.getEntrepreneurbyId = async (req, res, next) => {
   const id = req.body.id;
-  console.log(id)
+  //console.log(id)
   let user;
   try{
   user = await Entrepreneur.findById(id);
@@ -129,7 +129,7 @@ exports.getEntrepreneurbyId = async (req, res, next) => {
   if(!user){
     return next(new HttpError("The server is not responding, please try again later", 500));
   }
-  console.log(user);
+  //console.log(user);
   res.send(JSON.stringify({user:user}));
 }
 

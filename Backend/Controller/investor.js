@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 exports.signup = (req, res, next) => {
   const {name, email, password, companyName, description} = req.body;
   const imgUrl = req.file.path.replace("\\", "/");
-  console.log(req.body);
+  //console.log(req.body);
       bcrypt.hash(password,12)
       .then((hashedpwd) => {
         const investor = new Investor({

@@ -4,6 +4,7 @@ import {useNavigate } from "react-router-dom";
 import { AuthContext } from "../../store/AuthContext";
 import Navbar from "../../components/Navbar"
 import { AuthCtx } from "../../store/authctx";
+import forge from 'node-forge';
 
 function InvestorLogIn() {
   const navigate = useNavigate();
@@ -28,18 +29,24 @@ function InvestorLogIn() {
     }).then(response => response.json())
     .then(data => {
       console.log(data);
+      // const encryptedPrivateKey = data.user.privateKey;
+      // const passphrase = 'kartik3193';
+      // const privateKeyAsn1 = forge.pki.decryptRsaPrivateKey(encryptedPrivateKey, passphrase);
+      // const privateKeyPem = forge.pki.privateKeyToPem(privateKeyAsn1);
       const currentUser = {
         id: data.user._id,
         email: data.user.email,
         name: data.user.name,
         companyname: data.user.companyname,
         imgurl: data.user.image,
-        requests: data.user.requests
+        requests: data.user.requests,
+        // privateKey: privateKeyPem,
+        // publicKey: data.user.publicKey
       }
-      // console.log(currentUser);
+      //console.log(currentUser);
       //console.log(authctx.currentUser);
       authctx.dispatch({type:"LOGIN", payload:currentUser});
-      console.log(authctx.currentUser.currentUser.name);
+      //console.log(authctx.currentUser);
 
       //localStorage.setItem('currentuser', JSON.stringify(data.user._id));
       navigate("/investorhome");

@@ -6,6 +6,7 @@ import { ChatContextProvider } from "./store/ChatContext";
 import { ReceiverContextProvider } from "./store/ReceiverContext";
 import { AuthContextProvider } from "./store/AuthContext";
 import { AuthCtxProvider } from "./store/authctx";
+import { PrivateKeyContextProvider } from "./store/PrivateKey";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
       <AuthCtxProvider>
         <ReceiverContextProvider>
           <ChatContextProvider>
+            <PrivateKeyContextProvider>
             <App />
+            </PrivateKeyContextProvider>
           </ChatContextProvider>
         </ReceiverContextProvider>
       </AuthCtxProvider>

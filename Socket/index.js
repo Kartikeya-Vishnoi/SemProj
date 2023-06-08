@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
         }
         else{
             console.log(users)
-        io.to(user.socketId).emit("getMessage", {
+            io.to(user.socketId).emit("getMessage", {
             senderId,
             text,
         })

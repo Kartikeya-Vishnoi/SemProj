@@ -14,6 +14,7 @@ function InvestorList() {
           headers:{}
         })
         const data = await responseData.json();
+        console.log(data.users);
         setList(data.users);
       } catch (error) {
         console.log(error);
@@ -36,6 +37,7 @@ function InvestorList() {
               name={investor.name}
               image={investor.image}
               description={investor.description}
+              publicKey={investor.publicKey}
             />
           ))}
         </ul>

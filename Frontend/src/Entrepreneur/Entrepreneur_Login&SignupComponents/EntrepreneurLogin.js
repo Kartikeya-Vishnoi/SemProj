@@ -8,6 +8,7 @@ import ErrorModal from "../../UIElements/ErrorModal";
 import Input from "../../UIElements/FormElements/LoginInput";
 import { useForm } from "../../hooks/form-hook";
 import LoadingSpinner from "../../UIElements/LoadingSpinner";
+import forge from 'node-forge';
 
 function EntrepreneurLogIn() {
   const navigate = useNavigate();
@@ -52,15 +53,21 @@ function EntrepreneurLogIn() {
       if (!response.ok) {
         throw new Error(data.message);
       }
+      const encryptedPrivateKey = data.user.privateKey;
+      const passphrase = 'kartik3193';
+      const privateKeyAsn1 = forge.pki.decryptRsaPrivateKey(encryptedPrivateKey, passphrase);
+      const privateKeyPem = forge.pki.privateKeyToPem(privateKeyAsn1);
+
       currentUser = {
         id: data.user._id,
         email: data.user.email,
         name: data.user.name,
         startupname: data.user.startupname,
-        buisnesstype: data.user.buisnesstype,
         description: data.user.description,
         password: data.user.password,
         pitchurl: data.user.pitchurl,
+        privateKey:privateKeyPem,
+        publicKey:data.user.publicKey
       };
       authctx.dispatch({ type: "LOGIN", payload: currentUser });
       localStorage.setItem("currentuser", JSON.stringify(data.user._id));

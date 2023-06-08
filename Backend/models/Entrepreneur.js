@@ -30,6 +30,14 @@ const EntrepreneurSchema = new Schema({
         type: String,
         required: false 
     },
+    // privateKey : {
+    //     type: String,
+    //     required: false 
+    // },
+    // publicKey : {
+    //     type: String,
+    //     required: false 
+    // },
     requests:[{
         type: Schema.Types.ObjectId,
         required:false,

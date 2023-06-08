@@ -5,10 +5,18 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const HttpError = require("../models/http-error");
 const mongoose = require("mongoose");
+// const NodeRSA = require('node-rsa')
+// const forge = require('node-forge')
 
 exports.signup = (req, res, next) => {
   const {name, email, password, companyName, description} = req.body;
   const imgUrl = req.file.path.replace("\\", "/");
+  // const passphrase = 'kartik3193';
+  // const key = new NodeRSA({ b: 2048 });
+  // const privateKeyPem = key.exportKey('private');
+  // const privateKeyAsn1 = forge.pki.privateKeyFromPem(privateKeyPem);
+  // const encryptedPrivateKey = forge.pki.encryptRsaPrivateKey(privateKeyAsn1, passphrase);
+  // const publicKey = key.exportKey('public');
   //console.log(req.body);
       bcrypt.hash(password,12)
       .then((hashedpwd) => {
@@ -86,8 +94,9 @@ exports.login = (req, res, next) => {
 
 exports.getInvestors = async (req, res, next) => {
   let users;
+  const excludedFields = { password: 0};
   try {
-    users = await Investor.find({}, "-password");
+    users = await Investor.find({}, excludedFields);
   } catch (error) {
     return next(new HttpError("Cannot fetch users, please try again later", 500));
   }

@@ -5,6 +5,9 @@ const ConversationSchema = new Schema({
     members : {
         type: Array
     },    
+    key: {
+        type: String,
+    }
 },
 {timestamps:true}
 );

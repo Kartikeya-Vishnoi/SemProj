@@ -27,6 +27,14 @@ const InvestorSchema = new Schema({
         type: String,
         required: true 
     },
+    // privateKey : {
+    //     type: String,
+    //     required: false 
+    // },
+    // publicKey : {
+    //     type: String,
+    //     required: false 
+    // },
     proposals:[{
         type: Schema.Types.ObjectId,
         required:false,

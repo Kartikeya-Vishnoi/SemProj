@@ -4,11 +4,13 @@ import { useContext } from "react";
 import { AuthCtx } from "../store/authctx";
 import { ChatContext } from "../store/ChatContext";
 import { ReceiverContext } from "../store/ReceiverContext";
+import {PrivateKeyContext} from "../store/PrivateKey"
 
 function InvestorItem(props) {
   const navigate = useNavigate();
   //const auth = getAuth();
   const auth = useContext(AuthCtx);
+  const privatekey = useContext(PrivateKeyContext);
   const currentuser = auth.currentUser.currentUser;
   const currentUserId = currentuser.id;
   const { dispatch } = useContext(ChatContext);
@@ -68,17 +70,21 @@ function InvestorItem(props) {
           Data = await resp.json();
           console.log(Data);
           let conversationId = Data[0]._id.toString();
+          let privateKey = Data[0].key;
           console.log(conversationId);
           dispatch({ type: "CHANGE_ID", payload: conversationId });
+          privatekey.dispatch({ type: "CHANGE_KEY", payload: privateKey });
+          
         } catch (error) {
           console.log(error);
         }
       } else {
         console.log(data);
         let conversationId = data[0]._id.toString();
+        let privateKey = data[0].key;
         console.log(conversationId);
         dispatch({ type: "CHANGE_ID", payload: conversationId });
-
+        privatekey.dispatch({ type: "CHANGE_KEY", payload: privateKey });
       }
       console.log(data);
     } catch (error) {
@@ -86,8 +92,10 @@ function InvestorItem(props) {
     }
 
     const receiverid = props.id;
+    //const pkey = props.publicKey
     rec.dispatch({ type: "CHANGE_ID", payload: receiverid });
-    //console.log(rec.receiverId.receiverId);
+    // pubkey.dispatch({type: "CHANGE_KEY", payload: pkey})
+    // console.log(pubkey.publicKey.publicKey);
     navigate("/chat");
   }
 

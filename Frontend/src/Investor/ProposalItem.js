@@ -6,19 +6,22 @@ import classes from "./ProposalItem.module.css";
 import { AuthCtx } from "../store/authctx";
 import { ChatContext } from "../store/ChatContext";
 import { ReceiverContext } from "../store/ReceiverContext";
+import { PrivateKeyContext } from "../store/PrivateKey";
 
 function ProposalItem(props) {
   const [username, setUsername] = useState(null);
   const [userCompanyInfo, setUserCompanyInfo] = useState(null);
   const [userStartUpName, setUserStartUpName] = useState(null);
   const [userBuisnessType, setUserBuisnessType] = useState(null);
+  //  const [pkey, setPkey] = useState(null);
   const [id, setUserid] = useState();
   const [pitch, Setpitch] = useState();
   const auth = useContext(AuthCtx);
   const currentUserId = auth.currentUser.currentUser.id;
-  console.log(currentUserId);
+  // console.log(currentUserId);
   const { dispatch } = useContext(ChatContext);
   const rec = useContext(ReceiverContext);
+  const privatekey = useContext(PrivateKeyContext);
 
   async function chatHandler() {
     let id1, id2;
@@ -58,22 +61,28 @@ function ProposalItem(props) {
           Data = await resp.json();
           console.log(Data);
           let conversationId = Data[0]._id.toString();
+          let privateKey = Data[0].key;
           console.log(conversationId);
           dispatch({ type: "CHANGE_ID", payload: conversationId });
+          privatekey.dispatch({ type: "CHANGE_KEY", payload: privateKey });
         } catch (error) {
           console.log(error);
         }
       } else {
         console.log(data);
         let conversationId = data[0]._id.toString();
+        let privateKey = data[0].key;
         console.log(conversationId);
         dispatch({ type: "CHANGE_ID", payload: conversationId });
+        privatekey.dispatch({ type: "CHANGE_KEY", payload: privateKey });
       }
     } catch (error) {
       console.log(error);
     }
     const receiverid = props.proposal;
     rec.dispatch({ type: "CHANGE_ID", payload: receiverid });
+    // pubkey.dispatch({type: "CHANGE_KEY", payload: pkey})
+    // console.log(pubkey.publicKey.publicKey);
     navigate("/chat");
   }
 
@@ -106,6 +115,7 @@ function ProposalItem(props) {
         setUserCompanyInfo(data.user.description);
         setUserStartUpName(data.user.startupname);
         setUserBuisnessType(data.user.buisnesstype);
+        // setPkey(data.user.publicKey);
         //setUserid(name[0].uid);
       } catch (err) {
         console.log(err);

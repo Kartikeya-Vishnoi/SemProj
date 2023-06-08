@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Investor = require("../models/Investor");
 const HttpError = require("../models/http-error");
+const NodeRSA = require('node-rsa')
+const forge = require('node-forge')
 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -37,6 +39,14 @@ exports.signup = async (req, res, next) => {
   } catch (err) {
     return next(new HttpError("Signing up failed please try again", 500));
   }
+
+  // const passphrase = 'kartik3193';
+  // const key = new NodeRSA({ b: 2048 });
+  // const privateKeyPem = key.exportKey('private');
+  // const privateKeyAsn1 = forge.pki.privateKeyFromPem(privateKeyPem);
+  // const encryptedPrivateKey = forge.pki.encryptRsaPrivateKey(privateKeyAsn1, passphrase);
+  // const publicKey = key.exportKey('public');
+
   const entrepreneur = new Entrepreneur({
     email: email,
     name: name,
@@ -45,6 +55,8 @@ exports.signup = async (req, res, next) => {
     description: description,
     password: hashedpwd,
     pitchurl: pitchUrl,
+    // privateKey:encryptedPrivateKey,
+    // publicKey
   });
   let created;
   try {
@@ -121,7 +133,7 @@ exports.getEntrepreneurbyId = async (req, res, next) => {
   //console.log(id)
   let user;
   try{
-  user = await Entrepreneur.findById(id);
+  user = await Entrepreneur.findById(id).select('-password');
   }
   catch(err){
     return next(new HttpError("The server is not responding, please try again later", 500));

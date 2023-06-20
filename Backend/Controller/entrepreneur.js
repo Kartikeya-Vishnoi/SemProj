@@ -4,8 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Investor = require("../models/Investor");
 const HttpError = require("../models/http-error");
-const NodeRSA = require('node-rsa')
-const forge = require('node-forge')
 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -33,6 +31,7 @@ exports.signup = async (req, res, next) => {
   }
   const pitchUrl = req.files["video"][0].path.replace("\\", "/");
   const logoUrl = req.files["logo"][0].path.replace("\\", "/");
+  const docUrl = req.files["verificationdoc"][0].path.replace("\\", "/");
   let hashedpwd;
   try {
     hashedpwd = await bcrypt.hash(password, 12);
@@ -55,8 +54,7 @@ exports.signup = async (req, res, next) => {
     description: description,
     password: hashedpwd,
     pitchurl: pitchUrl,
-    // privateKey:encryptedPrivateKey,
-    // publicKey
+    verificationdoc: docUrl
   });
   let created;
   try {

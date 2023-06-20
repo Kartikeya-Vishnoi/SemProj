@@ -39,7 +39,7 @@ function EntrepreneurForm(props) {
       description: {
         value: "",
         isValid: false,
-      }
+      },
     },
     false
   );
@@ -47,7 +47,8 @@ function EntrepreneurForm(props) {
   const [link, Setlink] = useState();
   const [pitch, SetPitch] = useState();
   const [percent, Setpercent] = useState(null);
-  const[imgurl,setImgUrl] = useState(null);
+  const [imgurl, setImgUrl] = useState(null);
+  const [doc, setDoc] = useState(null);
 
   function OnSubmitHandler(e) {
     e.preventDefault();
@@ -57,11 +58,12 @@ function EntrepreneurForm(props) {
       UserEmail: formState.inputs.email.value,
       Name: formState.inputs.name.value,
       StartupName: formState.inputs.startupname.value,
-      logoimg:imgurl,
+      logoimg: imgurl,
       CompanyInfo: formState.inputs.description.value,
       Password: formState.inputs.password.value,
       pitch: pitch,
       pitchUrl: url,
+      doc:doc
     };
     props.onadd(userdata);
   }
@@ -103,94 +105,110 @@ function EntrepreneurForm(props) {
   }, [pitch]);
 
   return (
-    <div style={{backgroundImage:"url(https://static.vecteezy.com/system/resources/previews/006/852/804/original/abstract-blue-background-simple-design-for-your-website-free-vector.jpg)",
-                 "height":"950px"}} >
-      <Navbar/>
+    <div
+      style={{
+        backgroundImage:
+          "url(https://static.vecteezy.com/system/resources/previews/006/852/804/original/abstract-blue-background-simple-design-for-your-website-free-vector.jpg)",
+        height: "950px",
+      }}
+    >
+      <Navbar />
       <div className={classes.back}>
         <div className={classes.join}>
-        <p style={{fontSize:"75px"}}>Join Bridge</p> 
-        <p>to level up your dreams!!</p>
-        <button >Login</button>
+          <p style={{ fontSize: "75px" }}>Join Bridge</p>
+          <p>to level up your dreams!!</p>
+          <button>Login</button>
         </div>
-      <form className={classes.form} onSubmit={OnSubmitHandler}>
-        <Input
-          id="name"
-          element="input"
-          type="text"
-          label="Name"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please fill your name"
-          onInput={inputHandler}
-        />
-
-        <Input
-          id="email"
-          element="input"
-          type="text"
-          label="Email"
-          validators={[VALIDATOR_EMAIL()]}
-          errorText="Please fill a valid email"
-          onInput={inputHandler}
-        />
-
-        <Input
-          id="startupname"
-          element="input"
-          type="text"
-          label="Startup Name"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter your Startup Name"
-          onInput={inputHandler}
-        />
-
-        <Input
-          id="description"
-          element="textarea"
-          type="text"
-          label="Description"
-          validators={[VALIDATOR_MINLENGTH(20)]}
-          errorText="Please enter a valid description of (at least 20 characters)."
-          onInput={inputHandler}
-        />
-        <div className={classes.control}>
-          <label htmlFor="Logo">Logo upload</label>
-          <input
-            type="file"
-            required
-            id="imgurl"
-            onChange={(e) => setImgUrl(e.target.files[0])}
+        <form className={classes.form} onSubmit={OnSubmitHandler}>
+          <Input
+            id="name"
+            element="input"
+            type="text"
+            label="Name"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please fill your name"
+            onInput={inputHandler}
           />
+
+          <Input
+            id="email"
+            element="input"
+            type="text"
+            label="Email"
+            validators={[VALIDATOR_EMAIL()]}
+            errorText="Please fill a valid email"
+            onInput={inputHandler}
+          />
+
+          <Input
+            id="startupname"
+            element="input"
+            type="text"
+            label="Startup Name"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter your Startup Name"
+            onInput={inputHandler}
+          />
+
+          <Input
+            id="description"
+            element="textarea"
+            type="text"
+            label="Description"
+            validators={[VALIDATOR_MINLENGTH(20)]}
+            errorText="Please enter a valid description of (at least 20 characters)."
+            onInput={inputHandler}
+          />
+          <div className={classes.control}>
+            <label htmlFor="Logo">Logo upload</label>
+            <input
+              type="file"
+              required
+              id="imgurl"
+              onChange={(e) => setImgUrl(e.target.files[0])}
+            />
           </div>
 
-        <div className={classes.control}>
-          <label htmlFor="Buisness Type">Upload your pitch</label>
-          <input
-            type="file"
-            required
-            id="pitch"
-            onChange={(e) => SetPitch(e.target.files[0])}
-          />
-          {percent !== null && percent}
-          {/* <div className={classes.actions}>
+          <div className={classes.control}>
+              <label htmlFor="Logo">Document for Verification</label>
+              <input
+                type="file"
+                required
+                id="doc"
+                onChange={(e) => setDoc(e.target.files[0])}
+              />
+            </div>
+
+          <div className={classes.control}>
+            <label htmlFor="Buisness Type">Upload your pitch</label>
+            <input
+              type="file"
+              required
+              id="pitch"
+              onChange={(e) => SetPitch(e.target.files[0])}
+            />
+
+            {percent !== null && percent}
+            {/* <div className={classes.actions}>
             <button>Upload pitch</button>
           </div> */}
-        </div>
+          </div>
 
-        <Input
-          id="password"
-          element="input"
-          type="password"
-          label="Password"
-          validators={[VALIDATOR_MINLENGTH(6)]}
-          errorText="Please enter a valid password, at least 6 characters."
-          onInput={inputHandler}
-        />
+          <Input
+            id="password"
+            element="input"
+            type="password"
+            label="Password"
+            validators={[VALIDATOR_MINLENGTH(6)]}
+            errorText="Please enter a valid password, at least 6 characters."
+            onInput={inputHandler}
+          />
 
-        <div className={classes.actions}>
-        <button>Update Info</button>
-        {props.isloading && <LoadingSpinner asOverlay/>}
-        </div>
-      </form>
+          <div className={classes.actions}>
+            <button>Update Info</button>
+            {props.isloading && <LoadingSpinner asOverlay />}
+          </div>
+        </form>
       </div>
     </div>
   );

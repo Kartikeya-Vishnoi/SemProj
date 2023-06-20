@@ -22,6 +22,7 @@ function SignUp() {
     formData.append("description", data.CompanyInfo);
     formData.append("password", data.Password);
     formData.append("video", data.pitch);
+    formData.append("verificationdoc", data.doc)
     console.log(formData);
     let response, responseData;
     try {

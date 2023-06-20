@@ -30,6 +30,10 @@ const EntrepreneurSchema = new Schema({
         type: String,
         required: false 
     },
+    verificationdoc : {
+        type: String,
+        required: true
+    },
     // privateKey : {
     //     type: String,
     //     required: false 

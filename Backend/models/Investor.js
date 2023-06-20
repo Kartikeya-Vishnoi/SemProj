@@ -39,6 +39,11 @@ const InvestorSchema = new Schema({
         type: Schema.Types.ObjectId,
         required:false,
         ref: 'Entrepreneur'
+    }],
+    acceptedproposals:[{
+        type: Schema.Types.ObjectId,
+        required:false,
+        ref: 'Entrepreneur'
     }]
 })
 

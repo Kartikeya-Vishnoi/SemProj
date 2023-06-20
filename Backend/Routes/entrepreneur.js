@@ -6,7 +6,7 @@ const Router = express.Router();
 
 Router.put(
   "/signup",
-  fileUpload.fields([{name:"video"}, { name:"logo"}]),
+  fileUpload.fields([{name:"video"}, { name:"logo"}, {name:"verificationdoc"}]),
   [
     check("email").normalizeEmail().isEmail(),
     check("name").not().isEmpty(),

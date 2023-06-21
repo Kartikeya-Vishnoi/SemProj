@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Kartikeya-Vishnoi/SemProj/issues"
   },
-  "homepage": "https://github.com/Kartikeya-Vishnoi/SemProj#readme"
+  "homepage": "https://github.com/Kartikeya-Vishnoi/SemProj#readme",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
 }

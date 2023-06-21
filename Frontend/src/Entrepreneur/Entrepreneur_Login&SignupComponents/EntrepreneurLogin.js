@@ -53,10 +53,10 @@ function EntrepreneurLogIn() {
       if (!response.ok) {
         throw new Error(data.message);
       }
-      const encryptedPrivateKey = data.user.privateKey;
-      const passphrase = 'kartik3193';
-      const privateKeyAsn1 = forge.pki.decryptRsaPrivateKey(encryptedPrivateKey, passphrase);
-      const privateKeyPem = forge.pki.privateKeyToPem(privateKeyAsn1);
+      // const encryptedPrivateKey = data.user.privateKey;
+      // const passphrase = 'kartik3193';
+      // const privateKeyAsn1 = forge.pki.decryptRsaPrivateKey(encryptedPrivateKey, passphrase);
+      // const privateKeyPem = forge.pki.privateKeyToPem(privateKeyAsn1);
 
       currentUser = {
         id: data.user._id,
@@ -66,8 +66,8 @@ function EntrepreneurLogIn() {
         description: data.user.description,
         password: data.user.password,
         pitchurl: data.user.pitchurl,
-        privateKey:privateKeyPem,
-        publicKey:data.user.publicKey
+        // privateKey:privateKeyPem,
+        // publicKey:data.user.publicKey
       };
       authctx.dispatch({ type: "LOGIN", payload: currentUser });
       localStorage.setItem("currentuser", JSON.stringify(data.user._id));

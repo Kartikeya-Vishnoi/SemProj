@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./store/AuthContext";
+import { AuthCtx } from "./store/authctx";
 import UserHome from "./Entrepreneur/UserHome";
 import EntrepreneurLogIn from "./Entrepreneur/Entrepreneur_Login&SignupComponents/EntrepreneurLogin";
 import SignUp from "./Entrepreneur/Entrepreneur_Login&SignupComponents/SignUp";
@@ -23,9 +24,9 @@ import About from "./components/About";
 //import { AuthCtx } from "./store/authctx";
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthCtx);
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />;
+    return currentUser.currentUser ? children : <Navigate to="/login" />;
   };
   // console.log(currentUser)
   //const authctx = useContext(AuthCtx);

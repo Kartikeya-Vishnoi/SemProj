@@ -45,7 +45,7 @@ app.use((error,req,res,next) => {
 
 mongoose.connect('mongodb+srv://incognitoproj:oYqQXYTb8U7DvJRq@cluster0.tymagje.mongodb.net/database?retryWrites=true&w=majority')
 .then(result =>{
-    app.listen(8080);
+    app.listen(8081);
 }).catch(err => console.log(err))
 
 //mongodb+srv://kartikeyavishnoi29:JHXVEBvm0xVGucMt@restapicluster.yc3pnsf.mongodb.net/messages?retryWrites=true&w=majority

@@ -14,7 +14,7 @@ spec:
           metadata:
                name: bridge_pod
                labels:
-                    - version: bridge_latest
+                    version: bridge_latest
           spec:
                containers:
                     - name: bridge_container

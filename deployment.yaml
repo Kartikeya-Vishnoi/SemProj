@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-     name: bridge_deploy
+     name: bridge-deploy
 spec:
      strategy:
           type: RollingUpdate
      replicas: 3
      selector:
           matchLabels:
-               version: bridge_latest
+               version: bridge-latest
      template:
           # pod manifest file from metadata till the container definition
           metadata:
-               name: bridge_pod
+               name: bridge-pod
                labels:
-                    version: bridge_latest
+                    version: bridge-latest
           spec:
                containers:
-                    - name: bridge_container
+                    - name: bridge-container
                       image: kubearyan/bridge:latest
                       ports: 
                            - containerPort: 3000
@@ -28,13 +28,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: bridge_node_port
+    name: bridge-node-port
     labels:
-          run: node_port
+          run: node-port
 spec:
     type: NodePort
     selector:
-          version: bridge_latest 
+          version: bridge-latest 
     ports:
           - port: 3000
             targetPort: 3000

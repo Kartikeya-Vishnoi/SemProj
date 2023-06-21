@@ -7,4 +7,5 @@ run git clone https://github.com/Kartikeya-Vishnoi/SemProj
 copy ./script.sh ./SemProj/script.sh
 run chmod 700 ./SemProj/script.sh
 workdir ./SemProj
+expose 3000 8080 8900
 entrypoint ./script.sh && npm start

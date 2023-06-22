@@ -17,7 +17,7 @@ function InvestorLogIn() {
   const handleLogin = (e) => {
     e.preventDefault();
     //const auth=getAuth();
-    fetch("http://localhost:8080/investor/login",{
+    fetch("http://15.206.179.31:8080/investor/login",{
       method:"POST",
       body:JSON.stringify({
         "email":email,

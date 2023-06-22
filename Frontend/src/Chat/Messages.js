@@ -25,7 +25,7 @@ function Messages(props) {
   // const publicKeyString = pubkey.publicKey.publicKey;
   useEffect(() => {
     const fetchData = async () => {
-      socket.current = io.connect("ws://localhost:8900");
+      socket.current = io.connect("ws://15.206.179.31:8900");
       socket.current.on("getMessage", (data) => {
         console.log(data);
         // console.log("recieved something");
@@ -70,7 +70,7 @@ function Messages(props) {
     const unSub = async () => {
       let response, data;
       try {
-        response = await fetch("http://localhost:8080/messages/getmessages", {
+        response = await fetch("http://15.206.179.31:8080/messages/getmessages", {
           method: "POST",
           body: JSON.stringify({
             conversationId: ctx.conversationId.conversationId,
@@ -115,7 +115,7 @@ function Messages(props) {
     });
     let response;
     try {
-      response = await fetch("http://localhost:8080/messages/newmessage", {
+      response = await fetch("http://15.206.179.31:8080/messages/newmessage", {
         method: "POST",
         body: JSON.stringify({
           conversationId: ctx.conversationId.conversationId,

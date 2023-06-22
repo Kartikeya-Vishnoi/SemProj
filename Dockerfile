@@ -8,4 +8,5 @@ copy ./script.sh ./SemProj/script.sh
 run chmod 700 ./SemProj/script.sh
 workdir ./SemProj
 expose 3000 8080 8900
+run npm install -g concurrently
 entrypoint ./script.sh && npm start

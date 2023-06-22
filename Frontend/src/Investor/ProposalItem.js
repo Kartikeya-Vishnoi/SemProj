@@ -34,7 +34,7 @@ function ProposalItem(props) {
     }
     let response, data;
     try {
-      response = await fetch("http://15.206.179.31:8080/conversation/getChat", {
+      response = await fetch("http://13.232.84.21:8080/conversation/getChat", {
         method: "POST",
         body: JSON.stringify({
           id1: id1,
@@ -48,7 +48,7 @@ function ProposalItem(props) {
       if (data.length === 0) {
         let resp, Data;
         try {
-          resp = await fetch("http://15.206.179.31:8080/conversation/", {
+          resp = await fetch("http://13.232.84.21:8080/conversation/", {
             method: "POST",
             body: JSON.stringify({
               senderId: id1,
@@ -95,7 +95,7 @@ function ProposalItem(props) {
       let response;
       try {
         response = await fetch(
-          "http://15.206.179.31:8080/entrepreneur/getEntrepreneurbyId",
+          "http://13.232.84.21:8080/entrepreneur/getEntrepreneurbyId",
           {
             method: "POST",
             body: JSON.stringify({

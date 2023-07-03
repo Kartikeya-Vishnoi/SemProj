@@ -14,20 +14,20 @@ function ProposalItemHome() {
         <nav>
           <ul>
             <li>
-              <img className={classes.image} src={"http://localhost:8080/" + `${propctx.proposal.state.logo}`}></img>
+              <img className={classes.image} src={"http://65.1.130.135:8080/" + `${propctx.proposal.state.logo}`}></img>
             </li>
             <li>
               {` ${propctx.proposal.state.startupname}`}
             </li>
           </ul>
-          <button className={classes.doc} onClick={() => { window.open("http://localhost:8080/" + `${propctx.proposal.state.doc}`, '_blank') }}>Click to view official docs</button>
+          <button className={classes.doc} onClick={() => { window.open("http://65.1.130.135:8080/" + `${propctx.proposal.state.doc}`, '_blank') }}>Click to view official docs</button>
         </nav>
       </header>
 
       <div className={classes.container}>
         <div className={classes.video}>
-          <video controls poster="http://localhost:8080/frontendimages/Cool Game Player Logo.png">
-            <source src={"http://localhost:8080/" + `${propctx.proposal.state.pitchurl}`} type="video/mp4" />
+          <video controls poster="http://65.1.130.135:8080/frontendimages/Cool Game Player Logo.png">
+            <source src={"http://65.1.130.135:8080/" + `${propctx.proposal.state.pitchurl}`} type="video/mp4" />
           </video>
         </div>
         <div className={classes.details}>

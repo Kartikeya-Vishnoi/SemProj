@@ -26,7 +26,7 @@ function SignUp() {
     console.log(formData);
     let response, responseData;
     try {
-      response = await fetch("http://localhost:8080/entrepreneur/signup", {
+      response = await fetch("http://65.1.130.135:8080/entrepreneur/signup", {
         method: "PUT",
         body: formData,
       });

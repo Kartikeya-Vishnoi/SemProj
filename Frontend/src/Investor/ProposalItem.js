@@ -42,7 +42,7 @@ function ProposalItem(props) {
   const accepthandler = async () => {
     let response, data;
     try {
-      response = await fetch("http://localhost:8080/investor/acceptproposal", {
+      response = await fetch("http://65.1.130.135:8080/investor/acceptproposal", {
         method: "POST",
         body: JSON.stringify({
           investorId:currentUserId,
@@ -60,7 +60,7 @@ function ProposalItem(props) {
   const rejecthandler = async () => {
     let response;
     try {
-      response = await fetch("http://localhost:8080/investor/declineproposal", {
+      response = await fetch("http://65.1.130.135:8080/investor/declineproposal", {
         method: "POST",
         body: JSON.stringify({
           investorId:currentUserId,
@@ -89,7 +89,7 @@ function ProposalItem(props) {
     }
     let response, data;
     try {
-      response = await fetch("http://localhost:8080/conversation/getChat", {
+      response = await fetch("http://65.1.130.135:8080/conversation/getChat", {
         method: "POST",
         body: JSON.stringify({
           id1: id1,
@@ -103,7 +103,7 @@ function ProposalItem(props) {
       if (data.length === 0) {
         let resp, Data;
         try {
-          resp = await fetch("http://localhost:8080/conversation/", {
+          resp = await fetch("http://65.1.130.135:8080/conversation/", {
             method: "POST",
             body: JSON.stringify({
               senderId: id1,
@@ -147,7 +147,7 @@ function ProposalItem(props) {
       let response;
       try {
         response = await fetch(
-          "http://localhost:8080/entrepreneur/getEntrepreneurbyId",
+          "http://65.1.130.135:8080/entrepreneur/getEntrepreneurbyId",
           {
             method: "POST",
             body: JSON.stringify({
@@ -185,7 +185,7 @@ function ProposalItem(props) {
         <Card style={{ width: "400px", "margin-top": "50px","margin-right": "40px", height: "700px" }}>
           <div className={classes.blue}></div>
           <div className={classes.image}>
-            <img src={"http://localhost:8080/" + `${logo}`} alt={props.title}></img>
+            <img src={"http://65.1.130.135:8080/" + `${logo}`} alt={props.title}></img>
           </div>
           <div className={classes.details}>
             <h3 className={classes.entname}>{userStartUpName}</h3>

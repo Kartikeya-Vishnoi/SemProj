@@ -4,7 +4,7 @@ npm install
 cd ../Socket/
 npm install
 cd ../Frontend/
-npm install
+npm install --legacy-peer-deps
 cd ../
 npm install
 

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap');
+.item {
+  margin: 1rem 0;
+}
+.entname{
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-stretch: expanded;
+}
+.image {
+  width: 100%;
+  height: 14rem;
+  overflow: hidden;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  color: #2c292b;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  color: #77002e;
+  border: 1px solid #77002e;
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  margin-right: 50;
+  margin-left: 33px;
+  transition:  background-color 0.5s ease;
+  width: 150px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #ffe2ed;
+}
+
+.blue{
+  background-color: #1b4060;
+  padding: 30px;
+
+}
+.options{
+  display: flex;
+  flex-direction: row;
+}
+
+.details{
+display: flex;
+align-items: center;
+flex-direction: column;
+margin-top: 20px;
+}
+
+Card .details h3{
+font-weight: 800px;
+}
+
+li{
+margin-left: 40px;
+}
+
+.item{
+margin-left: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.btn{
+background-color: #2f41e3;
+
+border-style: none;
+width: 50%;
+padding:10px;
+
+border-radius: 5px;
+color: rgb(255, 255, 255);
+}
+
+/* .btns{
+color: black;
+text-decoration: none;
+width:160px;
+background-color: #47b5e4;
+border-style: none;
+padding:10px;
+border-radius: 10px;
+padding-bottom: 3px;
+margin:10px;
+margin-bottom: 0px;
+margin-top: 35px;
+margin-left:250px;
+} */
+
+.btn:hover{
+border : 2px solid black;
+}

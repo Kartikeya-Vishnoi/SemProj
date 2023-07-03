@@ -1,0 +1,124 @@
+.hero {
+    background-color: var(--overlay);
+    color: #fff;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.header{
+
+}
+
+.header ul{
+    list-style: none;
+    padding-top: 20px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: row-reverse;  
+}
+
+.header li{
+    background-color: rgb(10, 69, 69,0.8);
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    /* opacity: 0.5; */
+    color: white;
+    /* display: flex;
+    align-items: center;
+    justify-items:center; */
+    text-align: center;
+    width: 100px;
+}
+.header li:hover{
+    cursor: pointer;
+}
+
+.hero:before {
+    content: '';
+    background: url('https://i.pinimg.com/originals/55/01/60/5501609ee45d514d1f2c4a63502045e2.gif') no-repeat center center/cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.box{
+    padding-top: 120px;
+    padding-left:200px ;
+}
+
+.hero .content {
+    background-color:rgb(9, 74, 74);
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1100px;
+    /* padding-top: 100px;
+    padding-left: 100px; */
+    padding: 1rem;
+    opacity: 0.80;
+}
+
+.hero .content p:first-child {
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.hero .content p:nth-child(2) {
+    font-size: 2.9rem;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.hero .content p:nth-child(3) {
+    margin-top: 10px;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+
+.hero .content p:nth-child(4) {
+    font-size: 3.2rem;
+    margin-top: 10px;
+    font-style: italic;
+    margin-left: 15px;
+}
+
+.hero .button {
+    margin-top: 29px;
+    margin-left: 10px;
+    width: 150px;
+    height: 2.5rem;
+    background-color: #040002;
+    color: rgba(233, 227, 227, 0.971);
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+}
+
+.actions {
+    padding: 1.5rem;
+    text-align: center;
+  }
+ 
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    color: #77002e;
+    border: 1px solid #77002e;
+    background-color: transparent;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+  }
+  
+  .hero button:hover,
+  .hero button:active {
+    background-color: #040002;
+    color: white;
+    cursor: pointer;
+  }

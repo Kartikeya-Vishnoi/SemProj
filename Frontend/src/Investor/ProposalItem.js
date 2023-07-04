@@ -206,7 +206,7 @@ function ProposalItem(props) {
               REJECT PROPOSAL
             </button>
             </div>
-              :<button  onClick={chatHandler} style={{"backgroundColor":"#B9F3B5", color:"#12A607"}}>
+              :<button  onClick={chatHandler} style={{"backgroundColor":"#B9F3B5", color:"#12A607", "margin-left":"125px"}}>
               CHAT
             </button>
                }

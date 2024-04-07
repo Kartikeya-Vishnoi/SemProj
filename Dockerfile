@@ -1,12 +1,22 @@
-from ubuntu
-run apt update -y
-run apt install curl git -y
-run curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
-apt-get install -y nodejs
-run git clone https://github.com/Kartikeya-Vishnoi/SemProj
-copy ./script.sh ./SemProj/script.sh
-run chmod 700 ./SemProj/script.sh
-workdir ./SemProj
-expose 3000 8080 8900
-run npm install -g concurrently
-entrypoint ./script.sh && npm start
+# Build Stage 1
+# This build created a staging docker image 
+#
+FROM node:10.15.2-alpine
+WORKDIR /usr/src/app
+COPY package.json ./
+COPY .babelrc ./
+RUN npm install
+COPY ./src ./src
+RUN npm run build
+
+# Build Stage 2
+# This build takes the production build from staging build
+#
+FROM node:10.15.2-alpine
+WORKDIR /usr/src/app
+COPY package.json ./
+COPY .babelrc ./
+RUN npm install
+COPY --from=0 /usr/src/app/dist ./dist
+EXPOSE 4002
+CMD npm start
